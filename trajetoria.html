@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minha Trajetória - Henrique Alexsander Ferreira Neves</title>
+
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-dark: #0a0a23;
+        --accent: #d4a017;
+        --text-light: #fff;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f9fc;
+        color: #1a1a1a;
+        overflow-x: hidden;
+      }
+
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* === Header === */
+      header {
+        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        color: var(--text-light);
+        text-align: center;
+        padding: 120px 20px 70px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      h1 {
+        font-size: 2.3rem;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 1.05rem;
+        color: #dcdcdc;
+      }
+
+      /* === Timeline === */
+      .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 80px auto;
+        padding: 20px;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background: var(--accent);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+
+      .container {
+        padding: 20px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+      }
+
+      .container.left {
+        left: 0;
+      }
+
+      .container.right {
+        left: 50%;
+      }
+
+      .content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+
+      .container img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .date {
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .container::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background: var(--accent);
+        border: 4px solid #f7f9fc;
+        top: 30px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .right::after {
+        left: -10px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .timeline::after {
+          left: 31px;
+        }
+
+        .container {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+
+        .container::after {
+          left: 15px;
+        }
+
+        .right {
+          left: 0%;
+        }
+      }
+
+      footer {
+        background: var(--bg-dark);
+        color: #bbb;
+        text-align: center;
+        padding: 20px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- === NAVBAR === -->
+    <div id="navbar"></div>
+
+    <!-- === HEADER === -->
+    <header data-aos="fade-down">
+      <h1>Minha Trajetória</h1>
+      <p>Uma linha do tempo com momentos marcantes da minha jornada pessoal e acadêmica.</p>
+    </header>
+
+    <!-- === TIMELINE === -->
+    <div class="timeline">
+
+      <!-- Exemplo de evento 1 -->
+      <div class="container left" data-aos="fade-right">
+        <div class="content">
+          <div class="date">2025</div>
+          <img src="images/congresso.jpg" alt="Apresentação no Congresso">
+          <h3>Apresentação no Congresso Brasileiro de Cardiologia</h3>
+          <p>Apresentei nosso estudo sobre impacto da COVID-19 em pacientes cardiopatas, um marco importante na minha formação científica.</p>
+        </div>
+      </div>
+
+      <!-- Exemplo de evento 2 -->
+      <div class="container right" data-aos="fade-left">
+        <div class="content">
+          <div class="date">2024</div>
+          <img src="images/metanalysis.jpg" alt="Meta-Analysis Academy">
+          <h3>Coordenador da Meta-Analysis Academy</h3>
+          <p>Assumi a coordenação das monitorias internacionais, organizando uma equipe de 18 tutores e implementando padrões de excelência.</p>
+        </div>
+      </div>
+
+      <!-- Exemplo de evento 3 -->
+      <div class="container left" data-aos="fade-right">
+        <div class="content">
+          <div class="date">2023</div>
+          <img src="images/aph.jpg" alt="Curso APH-Tático">
+          <h3>Organização do Curso de Atendimento Pré-Hospitalar Tático</h3>
+          <p>Organizei o primeiro curso no CINDACTA II, reunindo médicos, estudantes e militares para um treinamento de alta complexidade.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
+
+    <!-- === Scripts === -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+
+      // Carrega a navbar
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

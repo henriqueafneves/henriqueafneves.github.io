@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificações | Henrique Neves</title>
+
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-dark: #0a0a23;
+        --accent: #d4a017;
+        --text-light: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f9fc;
+        color: #1a1a1a;
+      }
+
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: var(--bg-dark);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          border-radius: 0 0 8px 8px;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* === Header === */
+      header {
+        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        color: var(--text-light);
+        text-align: center;
+        padding: 120px 20px 60px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      header h1 {
+        font-size: 2.3rem;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        color: #dcdcdc;
+        font-size: 1.1rem;
+      }
+
+      /* === Certificações === */
+      main {
+        max-width: 1100px;
+        margin: 80px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 25px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      }
+
+      .card i {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .card h3 {
+        color: var(--bg-dark);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .card a:hover {
+        color: var(--bg-dark);
+      }
+
+      footer {
+        background: var(--bg-dark);
+        color: #bbb;
+        text-align: center;
+        padding: 20px;
+        margin-top: 80px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- === NAVBAR === -->
+    <nav>
+      <a href="index.html" class="logo">Henrique Neves</a>
+      <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="publicacoes.html"><i class="fa-solid fa-book"></i> Publicações</a>
+        <a href="projetos.html"><i class="fa-solid fa-flask"></i> Projetos</a>
+        <a href="certificacoes.html"><i class="fa-solid fa-certificate"></i> Certificações</a>
+        <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
+      </div>
+    </nav>
+
+    <!-- === HEADER === -->
+    <header data-aos="fade-down">
+      <h1>Certificações</h1>
+      <p>Reconhecimentos, cursos e formações complementares</p>
+    </header>
+
+    <!-- === MAIN === -->
+    <main>
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-user-graduate"></i>
+        <h3>Meta-Analysis Academy – International Mentor</h3>
+        <p>Certificação de Mentor Internacional em Revisões Sistemáticas e Meta-Análises. Atuação em orientação de alunos de diversos países.</p>
+        <a href="#">Visualizar certificado</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Curso de Atendimento Pré-Hospitalar Tático (APH-Tático)</h3>
+        <p>Certificação prática em simulação realística, com ênfase em manejo de vítimas em cenários de alto risco.</p>
+        <a href="#">Visualizar certificado</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-flask"></i>
+        <h3>Extensão Universitária – MedEpiGen</h3>
+        <p>Certificação em extensão universitária na área de genética e epigenética, com foco em divulgação científica e ensino.</p>
+        <a href="#">Visualizar certificado</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Introdução à Programação em R</h3>
+        <p>Certificação de conclusão em análise estatística com o software R, aplicando métodos de meta-análise e biostatística.</p>
+        <a href="#">Visualizar certificado</a>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Henrique Alexsander Ferreira Neves
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+      const toggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

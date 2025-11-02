@@ -15,25 +15,96 @@
     <style>
       :root {
         --bg-dark: #0a0a23;
-        --bg-light: #f7f9fc;
         --accent: #d4a017;
-        --text-dark: #1a1a1a;
         --text-light: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
       }
 
       body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: var(--bg-light);
-        color: var(--text-dark);
+        background: #f7f9fc;
+        color: #1a1a1a;
         overflow-x: hidden;
       }
 
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* === Mobile menu === */
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: var(--bg-dark);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          border-radius: 0 0 8px 8px;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* === Header === */
       header {
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 80px 20px 70px;
+        padding: 120px 20px 70px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
@@ -174,7 +245,6 @@
         border-color: var(--accent);
       }
 
-      /* === Responsividade === */
       @media screen and (max-width: 800px) {
         .timeline::before {
           left: 10px;
@@ -191,19 +261,6 @@
         }
       }
 
-      .back-link {
-        display: block;
-        text-align: center;
-        margin: 30px auto;
-        color: var(--accent);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .back-link:hover {
-        text-decoration: underline;
-      }
-
       footer {
         background: var(--bg-dark);
         color: #bbb;
@@ -216,8 +273,7 @@
   </head>
 
   <body>
-
- <!-- === NAVBAR === -->
+    <!-- === NAVBAR === -->
     <nav>
       <a href="index.html" class="logo">Henrique Neves</a>
       <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
@@ -228,7 +284,8 @@
         <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
       </div>
     </nav>
-    
+
+    <!-- === HEADER === -->
     <header data-aos="fade-down">
       <h1>Publicações Científicas</h1>
       <p class="subtitle">Artigos, revisões sistemáticas e apresentações em congressos</p>
@@ -271,20 +328,21 @@
         </div>
 
       </div>
-
-      <a class="back-link" href="index.html" data-aos="zoom-in"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
     </main>
 
     <footer>
       © 2025 Henrique Alexsander Ferreira Neves
     </footer>
 
-    <!-- Script da biblioteca AOS -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 1000,
-        once: true
+      AOS.init({ duration: 1000, once: true });
+
+      const toggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
       });
     </script>
   </body>

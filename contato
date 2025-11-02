@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato | Henrique Neves</title>
+
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-dark: #0a0a23;
+        --accent: #d4a017;
+        --text-light: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f9fc;
+        color: #1a1a1a;
+      }
+
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: var(--bg-dark);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          border-radius: 0 0 8px 8px;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* === Header === */
+      header {
+        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        color: var(--text-light);
+        text-align: center;
+        padding: 120px 20px 60px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      header h1 {
+        font-size: 2.3rem;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        color: #dcdcdc;
+        font-size: 1.1rem;
+      }
+
+      /* === Contato === */
+      main {
+        max-width: 800px;
+        margin: 80px auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 50px 30px;
+        text-align: center;
+      }
+
+      .contact-card {
+        margin: 25px 0;
+      }
+
+      .contact-card i {
+        font-size: 2rem;
+        color: var(--bg-dark);
+        margin-bottom: 10px;
+      }
+
+      .contact-card h3 {
+        font-size: 1.1rem;
+        margin: 5px 0;
+        color: var(--bg-dark);
+      }
+
+      .contact-card a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .contact-card a:hover {
+        color: var(--accent);
+      }
+
+      .email-btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 25px;
+        background: var(--accent);
+        color: var(--bg-dark);
+        font-weight: 600;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .email-btn:hover {
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+
+      footer {
+        background: var(--bg-dark);
+        color: #bbb;
+        text-align: center;
+        padding: 20px;
+        margin-top: 80px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- === NAVBAR === -->
+    <nav>
+      <a href="index.html" class="logo">Henrique Neves</a>
+      <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="publicacoes.html"><i class="fa-solid fa-book"></i> Publicações</a>
+        <a href="projetos.html"><i class="fa-solid fa-flask"></i> Projetos</a>
+        <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
+      </div>
+    </nav>
+
+    <!-- === HEADER === -->
+    <header data-aos="fade-down">
+      <h1>Entre em Contato</h1>
+      <p>Fique à vontade para se conectar comigo por e-mail ou redes profissionais.</p>
+    </header>
+
+    <main data-aos="fade-up">
+      <div class="contact-card">
+        <i class="fa-solid fa-envelope"></i>
+        <h3>E-mail</h3>
+        <a href="mailto:henriqueafneves@gmail.com">henriqueafneves@gmail.com</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fa-brands fa-linkedin"></i>
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/henriqueafneves" target="_blank">linkedin.com/in/henriqueafneves</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fa-brands fa-instagram"></i>
+        <h3>Instagram</h3>
+        <a href="https://www.instagram.com/henrique_afneves" target="_blank">@henrique_afneves</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fa-brands fa-orcid"></i>
+        <h3>ORCID</h3>
+        <a href="https://orcid.org/0009-0005-5274-8121" target="_blank">orcid.org/0009-0005-5274-8121</a>
+      </div>
+
+      <a href="mailto:henriqueafneves@gmail.com" class="email-btn"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</a>
+    </main>
+
+    <footer>
+      © 2025 Henrique Alexsander Ferreira Neves
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+      const toggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

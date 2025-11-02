@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Publicações Científicas | Henrique Neves</title>
+
+    <!-- Fontes e ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+
     <style>
       :root {
         --bg-dark: #0a0a23;
@@ -26,59 +29,110 @@
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 60px 20px;
+        padding: 70px 20px 60px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
       }
 
-      .container {
-        max-width: 900px;
+      p.subtitle {
+        font-size: 1.1rem;
+        color: #dcdcdc;
+      }
+
+      main {
+        max-width: 1000px;
         margin: 50px auto;
-        background: white;
+        padding: 0 20px;
+      }
+
+      .pub-card {
+        background: #fff;
         border-radius: 16px;
-        padding: 40px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin-bottom: 25px;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+      }
+
+      .pub-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      }
+
+      .pub-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--bg-dark);
+        margin-bottom: 8px;
+      }
+
+      .pub-journal {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .pub-authors {
+        font-size: 0.95rem;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .pub-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-doi {
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+
+      .btn-doi:hover {
+        background: var(--accent);
+        color: var(--bg-dark);
+      }
+
+      .btn-pdf {
+        background: #eee;
+        color: var(--bg-dark);
+        border: 1px solid #ccc;
+      }
+
+      .btn-pdf:hover {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
       }
 
       h2 {
         color: var(--bg-dark);
-        border-bottom: 2px solid #eee;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #ddd;
         padding-bottom: 5px;
-      }
-
-      .pub {
-        margin: 25px 0;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-      }
-
-      .pub-title {
-        font-weight: 600;
-        font-size: 1.05rem;
-      }
-
-      .pub-journal {
-        color: #444;
-        font-style: italic;
-      }
-
-      a {
-        color: var(--bg-dark);
-        text-decoration: none;
-        font-weight: 600;
-      }
-      a:hover {
-        color: var(--accent);
+        margin-top: 50px;
       }
 
       footer {
-        text-align: center;
         background: var(--bg-dark);
         color: #bbb;
-        padding: 15px;
+        text-align: center;
+        padding: 20px;
         font-size: 0.9rem;
         margin-top: 60px;
       }
@@ -88,6 +142,11 @@
         margin-top: 20px;
         color: var(--accent);
         font-weight: 600;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
@@ -95,32 +154,53 @@
   <body>
     <header>
       <h1>Publicações Científicas</h1>
-      <p>Artigos, revisões e apresentações em congressos</p>
+      <p class="subtitle">Artigos, revisões sistemáticas e apresentações em congressos</p>
     </header>
 
-    <div class="container">
-      <h2>Artigos publicados</h2>
+    <main>
+      <h2>🧪 Artigos publicados</h2>
 
-      <div class="pub">
+      <div class="pub-card">
         <div class="pub-title">Assessing blood pressure changes and hypertension-related outcomes in patients with migraine treated with erenumab: A systematic review and meta-analysis</div>
-        <div class="pub-journal"><i>Headache: The Journal of Head and Face Pain, 2025</i></div>
-        <div><a href="https://doi.org/10.1111/head.14921" target="_blank"><i class="fa-solid fa-link"></i> DOI: 10.1111/head.14921</a></div>
-        <div><small>Luana M. Makita, Rafael F. de Kleimmann, Henrique A. F. Neves et al.</small></div>
+        <div class="pub-journal">Headache: The Journal of Head and Face Pain, 2025</div>
+        <div class="pub-authors">
+          Luana M. Makita, Rafael F. de Kleimmann, <b>Henrique A. F. Neves</b>, et al.
+        </div>
+        <div class="pub-actions">
+          <a href="https://doi.org/10.1111/head.14921" target="_blank" class="btn btn-doi">
+            <i class="fa-solid fa-link"></i> Ver DOI
+          </a>
+          <a href="#" target="_blank" class="btn btn-pdf">
+            <i class="fa-solid fa-file-pdf"></i> Baixar PDF
+          </a>
+        </div>
       </div>
 
-      <div class="pub">
-        <div class="pub-title">[Adicione aqui sua próxima publicação]</div>
-        <div class="pub-journal"><i>Em preparação / submetido</i></div>
+      <div class="pub-card">
+        <div class="pub-title">[Em preparação] Effects of iloprost in pulmonary hypertension: a systematic review and meta-analysis</div>
+        <div class="pub-journal">Em submissão</div>
+        <div class="pub-authors">
+          <b>Henrique A. F. Neves</b>, Rhanderson Cardoso, Amanda Godoi, et al.
+        </div>
+        <div class="pub-actions">
+          <a href="#" class="btn btn-pdf disabled">
+            <i class="fa-solid fa-hourglass-half"></i> Em revisão
+          </a>
+        </div>
       </div>
 
-      <h2>Apresentações e congressos</h2>
-      <div class="pub">
-        <div class="pub-title">Apresentação no Congresso Brasileiro de Cardiologia</div>
-        <div class="pub-journal"><i>Sociedade Brasileira de Cardiologia, 2023</i></div>
+      <h2>🎓 Apresentações e Congressos</h2>
+
+      <div class="pub-card">
+        <div class="pub-title">Apresentação de trabalho no Congresso Brasileiro de Cardiologia</div>
+        <div class="pub-journal">Sociedade Brasileira de Cardiologia, 2023</div>
+        <div class="pub-actions">
+          <a href="#" class="btn btn-pdf"><i class="fa-solid fa-file-lines"></i> Ver pôster</a>
+        </div>
       </div>
 
       <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
-    </div>
+    </main>
 
     <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
   </body>

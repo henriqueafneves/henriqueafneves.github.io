@@ -30,80 +30,21 @@
         overflow-x: hidden;
       }
 
-      /* === Navbar === */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(10,10,35,0.95);
-        color: var(--text-light);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 40px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        z-index: 999;
-      }
-
-      .logo {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 25px;
-      }
-
-      .nav-links a {
-        color: var(--text-light);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-
-      /* === Mobile menu === */
-      .menu-toggle {
-        display: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          background: var(--bg-dark);
-          position: absolute;
-          top: 60px;
-          right: 0;
-          width: 200px;
-          border-radius: 0 0 8px 8px;
-          padding: 10px 0;
-        }
-
-        .nav-links.active {
-          display: flex;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-
       /* === Header === */
       header {
-        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        background: linear-gradient(135deg, #0a0a23, #1f2456, #0a0a23);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
         color: var(--text-light);
         text-align: center;
-        padding: 120px 20px 70px;
+        padding: 120px 20px 80px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
       }
 
       header img {
@@ -127,11 +68,33 @@
         margin-bottom: 8px;
       }
 
-      p {
-        font-size: 1.05rem;
+      #subtitle {
+        font-size: 1.1rem;
         color: #dcdcdc;
+        min-height: 24px;
       }
 
+      .buttons {
+        margin-top: 25px;
+      }
+
+      .btn {
+        background: var(--accent);
+        color: var(--bg-dark);
+        padding: 10px 18px;
+        border-radius: 8px;
+        margin: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: var(--bg-dark);
+        color: var(--text-light);
+      }
+
+      /* === Seções === */
       .section {
         max-width: 800px;
         margin: 60px auto;
@@ -142,12 +105,33 @@
         text-align: center;
       }
 
+      .section h2 {
+        color: var(--bg-dark);
+        margin-bottom: 20px;
+      }
+
+      /* === Footer === */
       footer {
         background: var(--bg-dark);
         color: #bbb;
         text-align: center;
         padding: 20px;
         margin-top: 60px;
+      }
+
+      /* === Responsividade === */
+      @media (max-width: 768px) {
+        header img {
+          width: 120px;
+          height: 120px;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        .section {
+          margin: 40px 20px;
+          padding: 25px;
+        }
       }
     </style>
   </head>
@@ -156,18 +140,25 @@
     <!-- === NAVBAR === -->
     <div id="navbar"></div>
 
-
     <!-- === HEADER === -->
     <header data-aos="fade-down">
       <img src="v2_1415dab5-29cb-4f38-9b03-274e3de7a02d.jpg" alt="Foto de Henrique Neves">
       <h1>Henrique Alexsander Ferreira Neves</h1>
-      <p>Estudante de Medicina | Pesquisador em Meta-Análise | Mentor Internacional</p>
+      <p id="subtitle"></p>
+
+      <div class="buttons">
+        <a href="publicacoes.html" class="btn"><i class="fa-solid fa-book"></i> Publicações</a>
+        <a href="projetos.html" class="btn"><i class="fa-solid fa-flask"></i> Projetos</a>
+        <a href="certificacoes.html" class="btn"><i class="fa-solid fa-certificate"></i> Certificações</a>
+        <a href="contato.html" class="btn"><i class="fa-solid fa-envelope"></i> Contato</a>
+      </div>
     </header>
 
     <!-- === SEÇÕES === -->
     <div class="section" data-aos="fade-up">
       <h2>Sobre mim</h2>
-      <p>Sou estudante de Medicina na UFPR, com foco em cardiologia, estatística e inteligência artificial aplicada à saúde. Coordeno o time de monitorias do Meta-Analysis Academy e participo de projetos como o MedEpiGen e o APH-Tático.</p>
+      <p>Sou estudante de Medicina na UFPR, com foco em cardiologia, estatística e inteligência artificial aplicada à saúde. 
+         Coordeno o time de monitorias do Meta-Analysis Academy e participo de projetos como o MedEpiGen e o APH-Tático.</p>
     </div>
 
     <div class="section" data-aos="fade-up">
@@ -177,36 +168,63 @@
          🌎 Mentor internacional em Revisões Sistemáticas e Meta-Análises</p>
     </div>
 
-    <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
+    <div class="section" data-aos="fade-up">
+      <h2>Destaques Recentes</h2>
+      <p>📘 Publicação aceita no <i>Headache Journal (2025)</i><br>
+         🎤 Entrevista para RPC-TV sobre pesquisa em inteligência artificial<br>
+         🎓 Organização da III Edição do Curso APH-Tático no CINDACTA II</p>
+    </div>
+
+    <!-- === FOOTER === -->
+    <footer>© <span id="year"></span> Henrique Alexsander Ferreira Neves</footer>
 
     <!-- === Scripts === -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1000, once: true });
 
-      const toggle = document.getElementById("menu-toggle");
-      const navLinks = document.getElementById("nav-links");
+      // Ano automático no footer
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      toggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
+      // Efeito de digitação
+      const phrases = [
+        "Estudante de Medicina na UFPR 🩺",
+        "Pesquisador em Meta-Análise 📊",
+        "Mentor Internacional 🌎"
+      ];
+      let i = 0, j = 0, current = "", isDeleting = false;
+      const speed = 90;
+
+      function type() {
+        const subtitle = document.getElementById("subtitle");
+        if (!isDeleting && j <= phrases[i].length) {
+          current = phrases[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          current = phrases[i].substring(0, j--);
+        } else if (!isDeleting && j > phrases[i].length) {
+          isDeleting = true;
+          setTimeout(type, 1500);
+          return;
+        } else {
+          isDeleting = false;
+          i = (i + 1) % phrases.length;
+        }
+        subtitle.textContent = current;
+        setTimeout(type, isDeleting ? speed / 2 : speed);
+      }
+      type();
+
+      // Carrega a navbar compartilhada
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+          const toggle = document.getElementById("menu-toggle");
+          const navLinks = document.getElementById("nav-links");
+          toggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+          });
+        });
     </script>
-
-    <script>
-  // Carrega o conteúdo da navbar
-  fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navbar').innerHTML = data;
-
-      // Reativa o menu mobile após o carregamento
-      const toggle = document.getElementById("menu-toggle");
-      const navLinks = document.getElementById("nav-links");
-      toggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    });
-</script>
-
   </body>
 </html>

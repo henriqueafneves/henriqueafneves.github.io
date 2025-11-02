@@ -223,6 +223,59 @@
   }
 }
 
+      /* === EXPANSÃO DE CARDS === */
+.expand-btn {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.expand-btn:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* Conteúdo oculto */
+.extra-content {
+  display: none;
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Galeria de fotos */
+.photo-gallery {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.photo-gallery img {
+  width: calc(33% - 10px);
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
     </style>
   </head>
 
@@ -251,16 +304,32 @@
         </a>
       </div>
 
-      <!-- CBC 2023 -->
+     <!-- CBC 2023 -->
       <div class="container left" data-aos="fade-right">
         <div class="content">
           <div class="date">2023 - Junho</div>
           <img src="images/cbc2023.jpeg" alt="CBC 2023">
           <h3>Congresso Brasileiro de Cardiologia 2023</h3>
-          <p>Tive a maravilhosa honra e oportunidade de apresentar minha primeira meta-análise no Congresso Brasileiro de Cardiologia, que aconteceu em Porto Alegre. 
-          Foi uma viagem muito especial, pois pude fazê-la junto dos meus grandes amigos Bruna, Gabriela e Vinicius!</p>
+          <p>
+            Tive a maravilhosa honra e oportunidade de apresentar minha primeira meta-análise no Congresso Brasileiro de Cardiologia, que aconteceu em Porto Alegre.
+            Foi uma viagem muito especial, pois pude fazê-la junto dos meus grandes amigos Bruna, Gabriela e Vinicius!
+          </p>
+      
+          <!-- Botão expansível -->
+          <button class="expand-btn" onclick="toggleDetails(this)">+ Saiba mais</button>
+      
+          <!-- Conteúdo extra escondido -->
+          <div class="extra-content">
+            <p><b>Curiosidades:</b> Foi a primeira vez que apresentei um trabalho em um grande congresso nacional. Tivemos momentos inesquecíveis e de muita amizade.</p>
+            <div class="photo-gallery">
+              <img src="images/cbc_amigos1.jpg" alt="Amigos CBC 2023">
+              <img src="images/cbc_amigos2.jpg" alt="Apresentação no CBC">
+              <img src="images/cbc_viagem.jpg" alt="Viagem Porto Alegre">
+            </div>
+          </div>
         </div>
       </div>
+
 
        <!-- Hospital do Trabalhador -->
       <div class="container right" data-aos="fade-left">
@@ -422,5 +491,23 @@
           document.getElementById('navbar').innerHTML = data;
         });
     </script>
+
+<script>
+function toggleDetails(button) {
+  const extra = button.nextElementSibling;
+  const isVisible = extra.style.display === "block";
+  
+  // Fecha todos os outros extras antes
+  document.querySelectorAll('.extra-content').forEach(div => div.style.display = 'none');
+  document.querySelectorAll('.expand-btn').forEach(btn => btn.textContent = '+ Saiba mais');
+  
+  if (!isVisible) {
+    extra.style.display = "block";
+    button.textContent = "− Recolher";
+  }
+}
+</script>
+
+    
   </body>
 </html>

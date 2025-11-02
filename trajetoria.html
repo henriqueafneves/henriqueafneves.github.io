@@ -275,6 +275,78 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* === TOGGLE ENTRE MODOS === */
+.view-toggle {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.view-toggle button {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 0 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-toggle button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.view-toggle .active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* === GALERIA === */
+.gallery {
+  display: none;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.gallery-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.gallery-card .info {
+  padding: 15px 20px;
+}
+
+.gallery-card h3 {
+  font-size: 1.1rem;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.gallery-card p {
+  color: #444;
+  font-size: 0.9rem;
+}
 
     </style>
   </head>
@@ -285,9 +357,18 @@
 
     <!-- === HEADER === -->
     <header data-aos="fade-down">
+
+      <div class="view-toggle" data-aos="fade-up">
+        <button id="timelineView" class="active" onclick="showTimeline()">🕓 Linha do Tempo</button>
+        <button id="galleryView" onclick="showGallery()">🖼️ Galeria</button>
+      </div>
+      
       <h1>Minha Trajetória</h1>
       <p>Uma linha do tempo com momentos marcantes da minha jornada pessoal e acadêmica.</p>
     </header>
+
+    
+
 
     <!-- === TIMELINE === -->
     <div class="timeline">
@@ -475,6 +556,37 @@
         </div>
       </div>
 
+      <!-- === GALERIA === -->
+<div class="gallery" data-aos="fade-up">
+
+  <div class="gallery-card">
+    <img src="images/cbc2023.jpeg" alt="CBC 2023">
+    <div class="info">
+      <h3>Congresso Brasileiro de Cardiologia 2023</h3>
+      <p>Apresentação da minha primeira meta-análise e viagem inesquecível a Porto Alegre com amigos.</p>
+    </div>
+  </div>
+
+  <div class="gallery-card">
+    <img src="images/metaSessions.png" alt="Meta Sessions">
+    <div class="info">
+      <h3>Entrevista no Meta-Sessions</h3>
+      <p>Conversa com o Dr. Rhanderson Cardoso sobre minha primeira publicação.</p>
+    </div>
+  </div>
+
+  <div class="gallery-card">
+    <img src="images/ingressoLIACOR.jpeg" alt="LIACOR">
+    <div class="info">
+      <h3>Ingresso na LIACOR</h3>
+      <p>Minha primeira experiência em uma liga acadêmica: Cardiologia na UFPR.</p>
+    </div>
+  </div>
+
+  <!-- Adicione quantos cards quiser -->
+</div>
+
+
     </div>
 
     <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
@@ -507,6 +619,23 @@ function toggleDetails(button) {
   }
 }
 </script>
+
+    <script>
+function showTimeline() {
+  document.querySelector('.timeline').style.display = 'block';
+  document.querySelector('.gallery').style.display = 'none';
+  document.getElementById('timelineView').classList.add('active');
+  document.getElementById('galleryView').classList.remove('active');
+}
+
+function showGallery() {
+  document.querySelector('.timeline').style.display = 'none';
+  document.querySelector('.gallery').style.display = 'grid';
+  document.getElementById('galleryView').classList.add('active');
+  document.getElementById('timelineView').classList.remove('active');
+}
+</script>
+
 
     
   </body>

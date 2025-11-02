@@ -13,197 +13,184 @@
     <style>
       :root {
         --bg-dark: #0a0a23;
-        --bg-light: #f7f9fc;
         --accent: #d4a017;
-        --text-dark: #1a1a1a;
         --text-light: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
       }
 
       body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: var(--bg-light);
-        color: var(--text-dark);
+        background: #f7f9fc;
+        color: #1a1a1a;
         overflow-x: hidden;
       }
 
-      /* ===== Header ===== */
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* === Mobile menu === */
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: var(--bg-dark);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          border-radius: 0 0 8px 8px;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* === Header === */
       header {
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 80px 20px 60px;
-        position: relative;
+        padding: 120px 20px 70px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
       header img {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         border: 4px solid var(--accent);
-        object-fit: cover;
         margin-bottom: 15px;
-        transition: transform 0.3s ease;
-      }
-      header img:hover {
-        transform: scale(1.05);
+        object-fit: cover;
       }
 
       h1 {
-        font-size: 2.4rem;
-        margin-bottom: 10px;
-        letter-spacing: 0.5px;
+        font-size: 2.3rem;
+        margin-bottom: 8px;
       }
 
-      header p {
-        font-size: 1.1rem;
+      p {
+        font-size: 1.05rem;
         color: #dcdcdc;
       }
 
-      /* ===== Section cards ===== */
-      section {
-        max-width: 900px;
+      .section {
+        max-width: 800px;
         margin: 60px auto;
         background: white;
-        border-radius: 18px;
+        border-radius: 16px;
         padding: 40px;
         box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         text-align: center;
-        transition: transform 0.2s ease, box-shadow 0.3s ease;
       }
 
-      section:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      }
-
-      h2 {
-        color: var(--bg-dark);
-        font-size: 1.6rem;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #eee;
-        display: inline-block;
-        padding-bottom: 5px;
-      }
-
-      p, ul {
-        font-size: 1.05rem;
-        line-height: 1.8;
-      }
-
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      li {
-        margin: 12px 0;
-      }
-
-      /* ===== Links ===== */
-      a {
-        color: var(--bg-dark);
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      a:hover {
-        color: var(--accent);
-      }
-
-      /* ===== Social icons ===== */
-      .social-icons a {
-        margin: 0 10px;
-        font-size: 1.6rem;
-        color: var(--bg-dark);
-        transition: color 0.3s ease, transform 0.2s ease;
-      }
-      .social-icons a:hover {
-        color: var(--accent);
-        transform: scale(1.1);
-      }
-
-      /* ===== Footer ===== */
       footer {
         background: var(--bg-dark);
         color: #bbb;
         text-align: center;
         padding: 20px;
-        font-size: 0.9rem;
-        margin-top: 80px;
-      }
-
-      footer span {
-        color: var(--accent);
-      }
-
-      /* ===== Animations ===== */
-      [data-aos] {
-        opacity: 0;
-        transform: translateY(20px);
-        transition-property: opacity, transform;
+        margin-top: 60px;
       }
     </style>
   </head>
 
-  <div style="text-align:center; margin-top:15px;">
-  <a href="publicacoes.html" style="color:#d4a017; font-weight:600; text-decoration:none;">
-    <i class="fa-solid fa-book"></i> Publicações Científicas
-  </a>
-</div>
-  
   <body>
+    <!-- === NAVBAR === -->
+    <nav>
+      <a href="index.html" class="logo">Henrique Neves</a>
+      <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="publicacoes.html"><i class="fa-solid fa-book"></i> Publicações</a>
+        <a href="projetos.html"><i class="fa-solid fa-flask"></i> Projetos</a>
+        <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
+      </div>
+    </nav>
+
+    <!-- === HEADER === -->
     <header data-aos="fade-down">
-      <img src="v2_1415dab5-29cb-4f38-9b03-274e3de7a02d.jpg" alt="Foto de Henrique Neves">
+      <img src="foto.png" alt="Foto de Henrique Neves">
       <h1>Henrique Alexsander Ferreira Neves</h1>
       <p>Estudante de Medicina | Pesquisador em Meta-Análise | Mentor Internacional</p>
     </header>
 
-    <section data-aos="fade-up">
+    <!-- === SEÇÕES === -->
+    <div class="section" data-aos="fade-up">
       <h2>Sobre mim</h2>
-      <p>
-        Sou estudante de Medicina na UFPR, com foco em cardiologia, estatística e inteligência artificial aplicada à saúde. Coordeno o time de monitorias do <b>Meta-Analysis Academy</b> e participo de projetos como o <b>MedEpiGen</b> e o <b>APH-Tático</b>. 
-      </p>
-    </section>
+      <p>Sou estudante de Medicina na UFPR, com foco em cardiologia, estatística e inteligência artificial aplicada à saúde. Coordeno o time de monitorias do Meta-Analysis Academy e participo de projetos como o MedEpiGen e o APH-Tático.</p>
+    </div>
 
-    <section data-aos="fade-up" data-aos-delay="100">
+    <div class="section" data-aos="fade-up">
       <h2>Conquistas</h2>
-      <ul>
-        <li>📄 Publicação no <i>Journal of Heart and Lung Transplant (2023)</i></li>
-        <li>🏆 Apresentação no Congresso Brasileiro de Cardiologia</li>
-        <li>🌎 Mentor internacional em Revisões Sistemáticas e Meta-Análises</li>
-      </ul>
-    </section>
+      <p>📄 Publicação no <i>Journal of Heart and Lung Transplant (2023)</i><br>
+         🏆 Apresentação no Congresso Brasileiro de Cardiologia<br>
+         🌎 Mentor internacional em Revisões Sistemáticas e Meta-Análises</p>
+    </div>
 
-    <section data-aos="fade-up" data-aos-delay="200">
-      <h2>Projetos</h2>
-      <ul>
-        <li>🧬 <b>MedEpiGen</b>: Divulgação científica e educação em Epigenética</li>
-        <li>🪖 <b>APH-Tático</b>: Curso de Atendimento Pré-Hospitalar Tático</li>
-        <li>📚 <b>Meta-Analysis Academy</b>: Mentoria internacional em pesquisa</li>
-      </ul>
-    </section>
+    <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
 
-    <section data-aos="fade-up" data-aos-delay="300">
-      <h2>Contato</h2>
-      <p><a href="mailto:henriqueafneves@gmail.com"><i class="fa-solid fa-envelope"></i> henriqueafneves@gmail.com</a></p>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/henriqueafneves/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/henriqueafneves" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://x.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 <span>Henrique Alexsander Ferreira Neves</span> — Todos os direitos reservados.
-    </footer>
-
-    <!-- AOS.js -->
+    <!-- === Scripts === -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 1000, once: true });
+
+      const toggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
     </script>
   </body>
 </html>

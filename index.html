@@ -14,7 +14,8 @@
       :root {
         --bg-dark: #0a0a23;
         --accent: #d4a017;
-        --text-light: #fff;
+        --text-light: #ffffff;
+        --text-muted: #d1d1d1;
       }
 
       * {
@@ -102,52 +103,77 @@
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 120px 20px 70px;
+        padding: 160px 20px 100px; /* altura ajustada */
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
       header img {
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
         border-radius: 50%;
         border: 4px solid var(--accent);
         margin-bottom: 15px;
         object-fit: cover;
-        box-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+        box-shadow: 0 0 25px rgba(212,160,23,0.5);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       header img:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(212, 160, 23, 0.6);
+        box-shadow: 0 0 35px rgba(212,160,23,0.7);
       }
 
       h1 {
-        font-size: 2.3rem;
-        margin-bottom: 8px;
+        font-size: 2.4rem;
+        margin-bottom: 10px;
+        color: var(--text-light);
       }
 
-      p {
-        font-size: 1.05rem;
-        color: #dcdcdc;
+      header p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        margin: 0;
       }
 
+      /* === Seções === */
       .section {
-        max-width: 800px;
-        margin: 60px auto;
-        background: white;
-        border-radius: 16px;
-        padding: 40px;
+        max-width: 900px;
+        margin: 70px auto;
+        background: #fff;
+        border-radius: 18px;
+        padding: 50px;
         box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         text-align: center;
+        transition: transform 0.3s ease;
       }
 
+      .section:hover {
+        transform: translateY(-5px);
+      }
+
+      .section h2 {
+        color: var(--bg-dark);
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        color: #444;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .section i {
+        color: var(--accent);
+      }
+
+      /* === Footer === */
       footer {
         background: var(--bg-dark);
         color: #bbb;
         text-align: center;
-        padding: 20px;
+        padding: 25px;
         margin-top: 60px;
+        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -163,18 +189,35 @@
       <p>Estudante de Medicina | Pesquisador em Meta-Análise | Mentor Internacional</p>
     </header>
 
-    <!-- === SEÇÕES === -->
+    <!-- === SOBRE === -->
     <div class="section" data-aos="fade-up">
-      <h2>Sobre mim</h2>
-      <p>Sou estudante de Medicina na UFPR, com foco em cardiologia, estatística e inteligência artificial aplicada à saúde. 
-         Coordeno o time de monitorias do Meta-Analysis Academy e participo de projetos como o MedEpiGen e o APH-Tático.</p>
+      <h2><i class="fas fa-user"></i> Sobre mim</h2>
+      <p>
+        Sou estudante de Medicina na Universidade Federal do Paraná (UFPR), com foco em cardiologia, pesquisa científica e inovação em saúde baseada em evidências.
+        Atuo como Coordenador de Tutorias do <strong>Meta-Analysis Academy</strong>, mentorando estudantes e médicos de diversos países na condução de revisões sistemáticas e meta-análises.
+        Também participo de projetos de extensão e pesquisa como o <strong>MedEpiGen</strong> e o <strong>APH-Tático</strong>, unindo ciência, tecnologia e impacto social.
+      </p>
     </div>
 
+    <!-- === CONQUISTAS === -->
     <div class="section" data-aos="fade-up">
-      <h2>Conquistas</h2>
-      <p>📄 Publicação no <i>Journal of Heart and Lung Transplant (2023)</i><br>
-         🏆 Apresentação no Congresso Brasileiro de Cardiologia<br>
-         🌎 Mentor internacional em Revisões Sistemáticas e Meta-Análises</p>
+      <h2><i class="fas fa-trophy"></i> Conquistas</h2>
+      <p>
+        📄 Publicação no <i>Journal of Heart and Lung Transplant (2023)</i><br>
+        🏆 Apresentação no Congresso Brasileiro de Cardiologia (CBC 2023)<br>
+        🌍 Mentoria internacional no <strong>Meta-Analysis Academy</strong><br>
+        🧠 Participação em pesquisas sobre epigenética, inteligência artificial e evidência clínica
+      </p>
+    </div>
+
+    <!-- === CONTATOS === -->
+    <div class="section" data-aos="fade-up">
+      <h2><i class="fas fa-envelope"></i> Contato</h2>
+      <p>
+        <strong>Email:</strong> <a href="mailto:henriqueafneves@gmail.com">henriqueafneves@gmail.com</a><br>
+        <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/henriqueafneves" target="_blank">linkedin.com/in/henriqueafneves</a><br>
+        <strong>Instagram:</strong> <a href="https://instagram.com/henrique_afneves" target="_blank">@henrique_afneves</a>
+      </p>
     </div>
 
     <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
@@ -184,27 +227,14 @@
     <script>
       AOS.init({ duration: 1000, once: true });
 
-      const toggle = document.getElementById("menu-toggle");
-      const navLinks = document.getElementById("nav-links");
-
-      toggle?.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-      });
-    </script>
-
-    <script>
-      // Carrega o conteúdo da navbar
+      // Carrega a navbar externa
       fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar').innerHTML = data;
-
-          // Reativa o menu mobile após o carregamento
           const toggle = document.getElementById("menu-toggle");
           const navLinks = document.getElementById("nav-links");
-          toggle?.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-          });
+          toggle?.addEventListener("click", () => navLinks.classList.toggle("active"));
         });
     </script>
   </body>

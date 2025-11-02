@@ -82,7 +82,7 @@
         color: #dcdcdc;
       }
 
-     /* === LINHA DO TEMPO - ESTILO GERAL === */
+/* === LINHA DO TEMPO - ESTILO GERAL === */
 .timeline {
   position: relative;
   max-width: 1100px;
@@ -90,42 +90,53 @@
   padding: 0 20px;
 }
 
+/* Linha central */
 .timeline::after {
   content: '';
   position: absolute;
   width: 4px;
-  background-color: #d4a017; /* dourado */
+  background-color: #d4a017;
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -2px;
+  transform: translateX(-50%);
 }
 
-/* === CONTAINER DOS CARDS === */
+/* === CONTAINERS === */
 .container {
-  padding: 20px 40px;
   position: relative;
   width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
-/* LADO ESQUERDO */
 .container.left {
   left: 0;
 }
 
-/* LADO DIREITO */
 .container.right {
   left: 50%;
 }
 
-/* === CONTEÚDO DO CARD === */
+/* Corrige o desalinhamento */
+.container.left .content {
+  margin-left: auto;
+}
+
+.container.right .content {
+  margin-right: auto;
+}
+
+/* === CONTEÚDO === */
 .content {
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   padding: 25px 30px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   position: relative;
+  width: 100%;
+  max-width: 480px;
 }
 
 .content:hover {
@@ -142,7 +153,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* === ANO === */
+/* === TEXTO === */
 .date {
   color: #d4a017;
   font-weight: 600;
@@ -150,7 +161,6 @@
   margin-bottom: 10px;
 }
 
-/* === TÍTULO DO CARD === */
 .content h3 {
   color: #111;
   font-size: 1.25rem;
@@ -159,7 +169,6 @@
   line-height: 1.4;
 }
 
-/* === TEXTO DO CARD === */
 .content p {
   color: #444;
   font-size: 0.95rem;
@@ -168,13 +177,12 @@
   margin-top: 0;
 }
 
-/* === BOLINHAS NA LINHA CENTRAL === */
+/* === PONTOS DA LINHA === */
 .container::after {
   content: '';
   position: absolute;
   width: 14px;
   height: 14px;
-  right: -7px;
   background-color: #d4a017;
   border: 3px solid #fff;
   top: 35px;
@@ -182,14 +190,18 @@
   z-index: 1;
 }
 
-.container.right::after {
-  left: -7px;
+.container.left::after {
+  right: -8px;
 }
 
-/* === RESPONSIVIDADE === */
+.container.right::after {
+  left: -8px;
+}
+
+/* === RESPONSIVO === */
 @media screen and (max-width: 768px) {
   .timeline::after {
-    left: 31px;
+    left: 30px;
   }
 
   .container {
@@ -204,6 +216,10 @@
 
   .container::after {
     left: 18px;
+  }
+
+  .content {
+    max-width: 100%;
   }
 }
 

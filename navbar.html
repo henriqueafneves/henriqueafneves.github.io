@@ -1,12 +1,118 @@
 <nav>
   <a href="index.html" class="logo">Henrique Neves</a>
-  <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
   <div class="nav-links" id="nav-links">
     <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
     <a href="trajetoria.html"><i class="fa-solid fa-timeline"></i> Minha Trajetória</a>
     <a href="publicacoes.html"><i class="fa-solid fa-book"></i> Publicações</a>
     <a href="projetos.html"><i class="fa-solid fa-flask"></i> Projetos</a>
-    <a href="certificacoes.html"><i class="fa-solid fa-certificate"></i> Certificações</a>
+    <a href="certificacoes.html"><i class="fa-solid fa-award"></i> Certificações</a>
     <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
   </div>
+
+  <style>
+    :root {
+      --bg-dark: #0a0a23;
+      --accent: #d4a017;
+      --text-light: #fff;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10,10,35,0.95);
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    /* Efeito dourado com brilho */
+    .nav-links a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 6px rgba(212, 160, 23, 0.6);
+    }
+
+    /* Sublinhado animado */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Menu mobile */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-dark);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        border-radius: 0 0 8px 8px;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    toggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
 </nav>

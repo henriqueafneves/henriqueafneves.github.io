@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projetos | Henrique Neves</title>
+
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-dark: #0a0a23;
+        --accent: #d4a017;
+        --text-light: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f9fc;
+        color: #1a1a1a;
+      }
+
+      /* === Navbar === */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: var(--bg-dark);
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          border-radius: 0 0 8px 8px;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+      }
+
+      /* === Header === */
+      header {
+        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        color: var(--text-light);
+        text-align: center;
+        padding: 120px 20px 60px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      header h1 {
+        font-size: 2.3rem;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        color: #dcdcdc;
+        font-size: 1.1rem;
+      }
+
+      /* === Projetos === */
+      main {
+        max-width: 1100px;
+        margin: 80px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 25px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      }
+
+      .card i {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .card h3 {
+        color: var(--bg-dark);
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        color: #333;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .card a:hover {
+        color: var(--bg-dark);
+      }
+
+      footer {
+        background: var(--bg-dark);
+        color: #bbb;
+        text-align: center;
+        padding: 20px;
+        margin-top: 80px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- === NAVBAR === -->
+    <nav>
+      <a href="index.html" class="logo">Henrique Neves</a>
+      <div class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="publicacoes.html"><i class="fa-solid fa-book"></i> Publicações</a>
+        <a href="projetos.html"><i class="fa-solid fa-flask"></i> Projetos</a>
+        <a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a>
+      </div>
+    </nav>
+
+    <!-- === HEADER === -->
+    <header data-aos="fade-down">
+      <h1>Projetos e Iniciativas</h1>
+      <p>Explorando ciência, ensino e impacto social em múltiplas frentes</p>
+    </header>
+
+    <!-- === MAIN === -->
+    <main>
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-microscope"></i>
+        <h3>Meta-Analysis Academy</h3>
+        <p>Coordeno o time de monitores e mentores internacionais, promovendo ensino e pesquisa em Revisões Sistemáticas e Meta-Análises para médicos e estudantes de todo o mundo.</p>
+        <a href="https://meta-analysis.academy" target="_blank">Ver mais</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-dna"></i>
+        <h3>MedEpiGen</h3>
+        <p>Projeto de extensão dedicado à divulgação científica em genética e epigenética, promovendo ações em escolas e museus com linguagem acessível e impacto educacional.</p>
+        <a href="#" target="_blank">Ver mais</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-helmet-safety"></i>
+        <h3>APH-Tático</h3>
+        <p>Organização e condução do Curso de Atendimento Pré-Hospitalar Tático no CINDACTA II, capacitando profissionais para atuação em cenários de alta complexidade e risco.</p>
+        <a href="https://www.instagram.com/aph.tatico" target="_blank">Ver no Instagram</a>
+      </div>
+
+      <div class="card" data-aos="fade-up">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Clube de Ciências</h3>
+        <p>Iniciativa para formar uma comunidade científica ativa, com Journal Club, cursos e mentorias em pesquisa. Parceria com Daniel Dahis e Yago Stephano.</p>
+        <a href="#" target="_blank">Ver mais</a>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Henrique Alexsander Ferreira Neves
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+      const toggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

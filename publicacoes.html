@@ -29,12 +29,12 @@
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 70px 20px 60px;
+        padding: 80px 20px 70px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         margin-bottom: 10px;
       }
 
@@ -44,57 +44,107 @@
       }
 
       main {
-        max-width: 1000px;
-        margin: 50px auto;
+        max-width: 950px;
+        margin: 60px auto;
         padding: 0 20px;
       }
 
-      .pub-card {
+      /* === Linha do tempo === */
+      .timeline {
+        position: relative;
+        margin: 40px 0;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: var(--bg-dark);
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 25px 30px;
         background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-        padding: 30px;
-        margin-bottom: 25px;
-        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        margin-bottom: 40px;
+        transition: all 0.3s ease;
       }
 
-      .pub-card:hover {
+      .timeline-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
       }
 
-      .pub-title {
-        font-size: 1.15rem;
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        top: 30px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 3px var(--bg-dark);
+      }
+
+      .timeline-item.left {
+        left: 0;
+      }
+
+      .timeline-item.left::after {
+        right: -10px;
+      }
+
+      .timeline-item.right {
+        left: 50%;
+      }
+
+      .timeline-item.right::after {
+        left: -10px;
+      }
+
+      .timeline-year {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      .timeline-title {
+        font-size: 1.1rem;
         font-weight: 600;
         color: var(--bg-dark);
-        margin-bottom: 8px;
+        margin-bottom: 5px;
       }
 
-      .pub-journal {
+      .timeline-journal {
         font-style: italic;
         color: #555;
         margin-bottom: 10px;
       }
 
-      .pub-authors {
+      .timeline-authors {
         font-size: 0.95rem;
         color: #333;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
       }
 
-      .pub-actions {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
+      .timeline-actions a {
         display: inline-block;
-        padding: 8px 15px;
+        margin-right: 10px;
+        padding: 6px 12px;
         border-radius: 8px;
-        font-size: 0.95rem;
-        font-weight: 600;
         text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
         transition: all 0.3s ease;
       }
 
@@ -120,12 +170,34 @@
         border-color: var(--accent);
       }
 
-      h2 {
-        color: var(--bg-dark);
-        font-size: 1.4rem;
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 5px;
-        margin-top: 50px;
+      /* === Responsividade === */
+      @media screen and (max-width: 800px) {
+        .timeline::before {
+          left: 10px;
+        }
+        .timeline-item {
+          width: 100%;
+          margin-left: 30px;
+        }
+        .timeline-item.right {
+          left: 0;
+        }
+        .timeline-item::after {
+          left: -30px !important;
+        }
+      }
+
+      .back-link {
+        display: block;
+        text-align: center;
+        margin: 30px auto;
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
       }
 
       footer {
@@ -134,19 +206,7 @@
         text-align: center;
         padding: 20px;
         font-size: 0.9rem;
-        margin-top: 60px;
-      }
-
-      .back-link {
-        display: inline-block;
-        margin-top: 20px;
-        color: var(--accent);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .back-link:hover {
-        text-decoration: underline;
+        margin-top: 80px;
       }
     </style>
   </head>
@@ -158,50 +218,48 @@
     </header>
 
     <main>
-      <h2>🧪 Artigos publicados</h2>
+      <div class="timeline">
 
-      <div class="pub-card">
-        <div class="pub-title">Assessing blood pressure changes and hypertension-related outcomes in patients with migraine treated with erenumab: A systematic review and meta-analysis</div>
-        <div class="pub-journal">Headache: The Journal of Head and Face Pain, 2025</div>
-        <div class="pub-authors">
-          Luana M. Makita, Rafael F. de Kleimmann, <b>Henrique A. F. Neves</b>, et al.
+        <!-- 2025 -->
+        <div class="timeline-item left">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-title">Assessing blood pressure changes and hypertension-related outcomes in patients with migraine treated with erenumab</div>
+          <div class="timeline-journal">Headache: The Journal of Head and Face Pain</div>
+          <div class="timeline-authors">Luana M. Makita, Rafael F. de Kleimmann, <b>Henrique A. F. Neves</b> et al.</div>
+          <div class="timeline-actions">
+            <a href="https://doi.org/10.1111/head.14921" target="_blank" class="btn-doi"><i class="fa-solid fa-link"></i> Ver DOI</a>
+            <a href="#" class="btn-pdf"><i class="fa-solid fa-file-pdf"></i> Baixar PDF</a>
+          </div>
         </div>
-        <div class="pub-actions">
-          <a href="https://doi.org/10.1111/head.14921" target="_blank" class="btn btn-doi">
-            <i class="fa-solid fa-link"></i> Ver DOI
-          </a>
-          <a href="#" target="_blank" class="btn btn-pdf">
-            <i class="fa-solid fa-file-pdf"></i> Baixar PDF
-          </a>
-        </div>
-      </div>
 
-      <div class="pub-card">
-        <div class="pub-title">[Em preparação] Effects of iloprost in pulmonary hypertension: a systematic review and meta-analysis</div>
-        <div class="pub-journal">Em submissão</div>
-        <div class="pub-authors">
-          <b>Henrique A. F. Neves</b>, Rhanderson Cardoso, Amanda Godoi, et al.
+        <!-- 2024 -->
+        <div class="timeline-item right">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-title">Effects of iloprost in pulmonary hypertension: a systematic review and meta-analysis</div>
+          <div class="timeline-journal">Em submissão</div>
+          <div class="timeline-authors"><b>Henrique A. F. Neves</b>, Rhanderson Cardoso, Amanda Godoi, et al.</div>
+          <div class="timeline-actions">
+            <a href="#" class="btn-pdf"><i class="fa-solid fa-hourglass-half"></i> Em revisão</a>
+          </div>
         </div>
-        <div class="pub-actions">
-          <a href="#" class="btn btn-pdf disabled">
-            <i class="fa-solid fa-hourglass-half"></i> Em revisão
-          </a>
-        </div>
-      </div>
 
-      <h2>🎓 Apresentações e Congressos</h2>
-
-      <div class="pub-card">
-        <div class="pub-title">Apresentação de trabalho no Congresso Brasileiro de Cardiologia</div>
-        <div class="pub-journal">Sociedade Brasileira de Cardiologia, 2023</div>
-        <div class="pub-actions">
-          <a href="#" class="btn btn-pdf"><i class="fa-solid fa-file-lines"></i> Ver pôster</a>
+        <!-- 2023 -->
+        <div class="timeline-item left">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-title">Apresentação no Congresso Brasileiro de Cardiologia</div>
+          <div class="timeline-journal">Sociedade Brasileira de Cardiologia</div>
+          <div class="timeline-actions">
+            <a href="#" class="btn-pdf"><i class="fa-solid fa-file-lines"></i> Ver pôster</a>
+          </div>
         </div>
+
       </div>
 
       <a class="back-link" href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
     </main>
 
-    <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
+    <footer>
+      © 2025 Henrique Alexsander Ferreira Neves
+    </footer>
   </body>
 </html>

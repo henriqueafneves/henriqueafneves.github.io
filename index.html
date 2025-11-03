@@ -354,6 +354,25 @@
         .metrics { gap: 15px; }
         .metric { width: 140px; }
       }
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  .leaflet-container {
+    background-color: #0a0a23 !important; /* Fundo escuro consistente com o site */
+  }
+
+  .leaflet-popup-content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #222;
+  }
+
+  .leaflet-popup-content strong {
+    color: #1b3324;
+  }
+</style>
+
+      
     </style>
   </head>
 
@@ -478,6 +497,15 @@
 
     <button id="backToTop" title="Voltar ao topo">↑</button>
 
+    <!-- === MAPA DE IMPACTO GLOBAL === -->
+<section id="map-section" data-aos="fade-up" style="background:#0a0a23; color:#fff; padding:80px 20px; text-align:center;">
+  <h2 style="color:#d4a017; font-size:2rem; margin-bottom:20px;">🌍 Alcance Global</h2>
+  <p style="color:#ccc; font-size:1.05rem; margin-bottom:30px;">
+    Projetos de ensino, pesquisa e extensão com impacto internacional
+  </p>
+  <div id="map" style="height:500px; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.4);"></div>
+</section>
+
     <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -496,5 +524,55 @@
       };
       btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     </script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Inicializa o mapa com cor escura e sem zoom exagerado
+  const map = L.map('map', {
+    zoomControl: false
+  }).setView([10, 0], 2);
+
+  // Adiciona o tile estilizado (minimalista e escuro)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+  }).addTo(map);
+
+  // Ícone dourado estilizado
+  const goldIcon = L.divIcon({
+    className: 'custom-icon',
+    html: '<i class="fa-solid fa-location-dot" style="color:#d4a017; font-size:20px; text-shadow: 0 0 8px rgba(212,160,23,0.8);"></i>',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12]
+  });
+
+  // Marcadores (você pode ajustar as coordenadas e descrições)
+  const locations = [
+    { coords: [-25.4284, -49.2733], title: "<strong>Curitiba, Brasil</strong><br>Base principal — UFPR, APH-Tático e MedEpiGen" },
+    { coords: [-23.5505, -46.6333], title: "<strong>São Paulo, Brasil</strong><br>MRCC 2025 — Diretor de Conteúdo" },
+    { coords: [29.7604, -95.3698], title: "<strong>Houston, EUA</strong><br>Parceria internacional — NASA / Meta-Analysis Academy" },
+    { coords: [43.6532, -79.3832], title: "<strong>Toronto, Canadá</strong><br>Colaboração em revisões sistemáticas" },
+    { coords: [51.5072, -0.1276], title: "<strong>Londres, Reino Unido</strong><br>Meta-Analysis Academy Global Network" },
+    { coords: [51.1694, 71.4491], title: "<strong>Astana, Cazaquistão</strong><br>Mentoria de alunos internacionais (Meta-Academy)" },
+    { coords: [19.4326, -99.1332], title: "<strong>Cidade do México</strong><br>Colaboração científica internacional" },
+  ];
+
+  locations.forEach(loc => {
+    L.marker(loc.coords, { icon: goldIcon }).addTo(map).bindPopup(loc.title);
+  });
+
+  // Animação de leve brilho nos marcadores
+  const css = document.createElement("style");
+  css.innerHTML = `
+    .custom-icon i {
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 4px rgba(212,160,23,0.5); }
+      to { text-shadow: 0 0 12px rgba(212,160,23,1); }
+    }
+  `;
+  document.head.appendChild(css);
+</script>
+
   </body>
 </html>

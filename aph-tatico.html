@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APH-Tático | Henrique Neves</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-dark: #0a0a23;
+        --accent: #d4a017;
+        --text-light: #fff;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #f7f9fc;
+        color: #1a1a1a;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10,10,35,0.95);
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 40px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+
+      .logo { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+      .nav-links {
+        display: flex; gap: 25px;
+      }
+      .nav-links a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+      .nav-links a:hover { color: var(--accent); }
+
+      header {
+        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        color: var(--text-light);
+        text-align: center;
+        padding: 120px 20px 80px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      }
+
+      header h1 { font-size: 2.3rem; margin-bottom: 10px; }
+      header p { color: #dcdcdc; font-size: 1.1rem; }
+
+      .section {
+        max-width: 900px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 40px;
+        text-align: center;
+      }
+
+      .section h2 { color: var(--bg-dark); margin-bottom: 15px; }
+      .section p { color: #444; line-height: 1.6; }
+
+      .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .photo-grid img {
+        width: 280px;
+        height: 180px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .photo-grid img:hover { transform: scale(1.05); }
+
+      footer {
+        background: var(--bg-dark);
+        color: #bbb;
+        text-align: center;
+        padding: 20px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navbar"></div>
+
+    <header data-aos="fade-down">
+      <h1>Curso de Atendimento Pré-Hospitalar Tático</h1>
+      <p>Formando profissionais para agir com foco, frieza e humanidade em cenários de crise.</p>
+    </header>
+
+    <div class="section" data-aos="fade-up">
+      <h2>📖 Sobre o Curso</h2>
+      <p>
+        O <strong>APH-Tático</strong> é uma iniciativa realizada no <strong>CINDACTA II</strong>, em Curitiba, 
+        com foco em capacitar profissionais de saúde e segurança pública para o atendimento de vítimas em situações de alto risco.
+        O curso combina fundamentos do <em>Tactical Combat Casualty Care (TCCC)</em> com treinamento prático sob pressão realista.
+      </p>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+      <h2>🪖 Edições Realizadas</h2>
+      <p>Confira registros das edições realizadas do curso no CINDACTA II:</p>
+
+      <div class="photo-grid">
+        <img src="images/aph1.jpg" alt="APH-Tático 2023">
+        <img src="images/aph2.jpg" alt="Treinamento">
+        <img src="images/aph3.jpg" alt="Simulação Tática">
+      </div>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+      <h2>🎯 Objetivos</h2>
+      <p>
+        • Ensinar o atendimento em zonas quente, morna e fria.<br>
+        • Integrar forças civis e militares em protocolos unificados.<br>
+        • Promover treinamento intensivo com foco em triagem, evacuação e estabilização de feridos.<br>
+      </p>
+    </div>
+
+    <div class="section" data-aos="fade-up">
+      <h2>📸 Redes e Contato</h2>
+      <p>Você pode acompanhar os bastidores e futuras edições pelo Instagram oficial:</p>
+      <a href="https://www.instagram.com/aph.tatico" target="_blank" style="color: var(--accent); font-weight: 600;">→ @aph.tatico</a>
+    </div>
+
+    <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000, once: true });
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('navbar').innerHTML = data);
+    </script>
+  </body>
+</html>

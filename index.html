@@ -378,6 +378,28 @@
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-hmKf+LzQCeQPaXUzqUENpH1H+fQXjBQF6Vg8L6rC85K1r3RIPAFb5v6Zr4nTzRQACmX6+mR87UxPjGFaRzP4BA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  /* Garante que os ícones SVG fiquem sem fundo branco */
+  .leaflet-div-icon,
+  .custom-icon {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Brilho suave compatível com SVG */
+  .custom-icon svg {
+    animation: glow 2.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 4px rgba(212,160,23,0.5)); }
+    to { filter: drop-shadow(0 0 12px rgba(212,160,23,1)); }
+  }
+</style>
+
+
 </head>
 
 <body>

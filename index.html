@@ -220,14 +220,17 @@
       }
 
       /* === Mapa === */
-      .leaflet-container {
-        background-color: #0a0a23 !important;
+      .leaflet-div-icon {
+        background: transparent !important;
+        border: none !important;
+      }
+      
+      .custom-icon {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
       }
 
-      .custom-icon {
-        background: transparent;
-        border: none;
-      }
 
       /* === Footer === */
       footer {
@@ -293,10 +296,11 @@
       // Ícone dourado estilizado (funcional)
       const goldIcon = L.divIcon({
         className: 'leaflet-div-icon custom-icon',
-        html: '<i class="fa-solid fa-location-dot" style="color:#d4a017; font-size:26px; text-shadow:0 0 12px rgba(212,160,23,1);"></i>',
+        html: '<i class="fa-solid fa-location-dot" style="color:#d4a017; font-size:26px; text-shadow:0 0 10px rgba(212,160,23,0.9);"></i>',
         iconSize: [26, 26],
         iconAnchor: [13, 26]
       });
+
 
       // Marcadores
       const locations = [

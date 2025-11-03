@@ -12,16 +12,16 @@
 
     <style>
       :root {
-        --bg-dark: #0f2310; /* Verde militar profundo */
-        --accent: #d4a017; /* Dourado elegante */
+        --bg-dark: #1b3324; /* Verde militar elegante */
+        --bg-dark2: #14281a;
+        --accent: #d4a017; /* Dourado */
         --text-light: #fff;
-        --green-light: #1f3b1f;
       }
 
       body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: #f7f9f8;
+        background: #f8faf9;
         color: #1a1a1a;
         overflow-x: hidden;
       }
@@ -31,7 +31,7 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(15,35,16,0.95);
+        background: rgba(27, 51, 36, 0.97);
         color: var(--text-light);
         display: flex;
         justify-content: space-between;
@@ -39,6 +39,7 @@
         padding: 12px 40px;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);
         z-index: 999;
+        backdrop-filter: blur(8px);
       }
 
       .logo {
@@ -66,23 +67,40 @@
 
       /* === Banner === */
       header {
-        background: linear-gradient(rgba(15,35,16,0.8), rgba(15,35,16,0.9)), url('images/aph-banner.jpg') center/cover no-repeat;
+        background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-dark2) 100%);
         color: var(--text-light);
         text-align: center;
-        padding: 140px 20px 100px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        padding: 160px 20px 110px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        position: relative;
+      }
+
+      header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
       }
 
       header h1 {
-        font-size: 2.6rem;
-        margin-bottom: 10px;
+        font-size: 2.7rem;
+        margin-bottom: 12px;
         color: var(--accent);
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        letter-spacing: 1px;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.4);
       }
 
       header p {
-        font-size: 1.1rem;
-        color: #e8e8e8;
+        font-size: 1.15rem;
+        color: #e9e9e9;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
       }
 
       /* === Seções === */
@@ -139,7 +157,7 @@
       .container.right { left: 50%; }
 
       .content {
-        background: white;
+        background: #fff;
         border-radius: 12px;
         padding: 25px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
@@ -198,10 +216,13 @@
         border-radius: 10px;
         object-fit: cover;
         box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .photo-grid img:hover { transform: scale(1.05); }
+      .photo-grid img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      }
 
       /* === Agradecimentos === */
       .thanks {
@@ -215,7 +236,7 @@
 
       .thanks img {
         width: 120px;
-        opacity: 0.8;
+        opacity: 0.85;
         transition: transform 0.3s ease, opacity 0.3s ease;
       }
 
@@ -224,12 +245,15 @@
         opacity: 1;
       }
 
+      /* === Rodapé === */
       footer {
         background: var(--bg-dark);
         color: #bbb;
         text-align: center;
         padding: 25px;
         margin-top: 60px;
+        font-size: 0.9rem;
+        border-top: 2px solid var(--accent);
       }
     </style>
   </head>

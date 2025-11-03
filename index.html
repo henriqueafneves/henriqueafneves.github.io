@@ -543,29 +543,33 @@ console.log("Font Awesome carregado:", typeof FontAwesomeConfig !== "undefined" 
     maxZoom: 19,
   }).addTo(map);
 
-  // Ícone dourado estilizado
-  const goldIcon = L.divIcon({
+  // Ícone dourado como SVG (compatível com Leaflet)
+const goldIcon = L.divIcon({
   className: 'custom-icon',
-  html: '<i class="fa-solid fa-location-dot" style="color:#d4a017; font-size:26px; text-shadow:0 0 12px rgba(212,160,23,1);"></i>',
+  html: `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="26" height="26" fill="#d4a017" style="filter: drop-shadow(0 0 8px rgba(212,160,23,0.8));">
+      <path d="M168 0C75.2 0 0 75.2 0 168c0 87.3 134.4 287.3 157.8 318.8c5.9 8.3 18.5 8.3 24.4 0C249.6 455.3 384 255.3 384 168C384 75.2 308.8 0 216 0zM192 240c-39.8 0-72-32.2-72-72s32.2-72 72-72s72 32.2 72 72S231.8 240 192 240z"/>
+    </svg>
+  `,
   iconSize: [26, 26],
   iconAnchor: [13, 13]
 });
 
+// Marcadores
+const locations = [
+  { coords: [-25.4284, -49.2733], title: "<strong>Curitiba, Brasil</strong><br>Base principal — UFPR, APH-Tático e MedEpiGen" },
+  { coords: [-23.5505, -46.6333], title: "<strong>São Paulo, Brasil</strong><br>MRCC 2025 — Diretor de Conteúdo" },
+  { coords: [29.7604, -95.3698], title: "<strong>Houston, EUA</strong><br>Parceria internacional — NASA / Meta-Analysis Academy" },
+  { coords: [43.6532, -79.3832], title: "<strong>Toronto, Canadá</strong><br>Colaboração em revisões sistemáticas" },
+  { coords: [51.5072, -0.1276], title: "<strong>Londres, Reino Unido</strong><br>Meta-Analysis Academy Global Network" },
+  { coords: [51.1694, 71.4491], title: "<strong>Astana, Cazaquistão</strong><br>Mentoria de alunos internacionais (Meta-Academy)" },
+  { coords: [19.4326, -99.1332], title: "<strong>Cidade do México</strong><br>Colaboração científica internacional" },
+];
 
-  // Marcadores (você pode ajustar as coordenadas e descrições)
-  const locations = [
-    { coords: [-25.4284, -49.2733], title: "<strong>Curitiba, Brasil</strong><br>Base principal — UFPR, APH-Tático e MedEpiGen" },
-    { coords: [-23.5505, -46.6333], title: "<strong>São Paulo, Brasil</strong><br>MRCC 2025 — Diretor de Conteúdo" },
-    { coords: [29.7604, -95.3698], title: "<strong>Houston, EUA</strong><br>Parceria internacional — NASA / Meta-Analysis Academy" },
-    { coords: [43.6532, -79.3832], title: "<strong>Toronto, Canadá</strong><br>Colaboração em revisões sistemáticas" },
-    { coords: [51.5072, -0.1276], title: "<strong>Londres, Reino Unido</strong><br>Meta-Analysis Academy Global Network" },
-    { coords: [51.1694, 71.4491], title: "<strong>Astana, Cazaquistão</strong><br>Mentoria de alunos internacionais (Meta-Academy)" },
-    { coords: [19.4326, -99.1332], title: "<strong>Cidade do México</strong><br>Colaboração científica internacional" },
-  ];
+locations.forEach(loc => {
+  L.marker(loc.coords, { icon: goldIcon }).addTo(map).bindPopup(loc.title);
+});
 
-  locations.forEach(loc => {
-    L.marker(loc.coords, { icon: goldIcon }).addTo(map).bindPopup(loc.title);
-  });
 
   // Animação de leve brilho nos marcadores
   const css = document.createElement("style");

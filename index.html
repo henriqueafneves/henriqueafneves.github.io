@@ -16,6 +16,14 @@
         --accent: #d4a017;
         --text-light: #ffffff;
         --text-muted: #d1d1d1;
+        --card-bg: #ffffff;
+      }
+
+      [data-theme="dark"] {
+        --bg-dark: #000010;
+        --text-light: #f5f5f5;
+        --text-muted: #b0b0b0;
+        --card-bg: #141428;
       }
 
       * {
@@ -29,6 +37,12 @@
         background: #f7f9fc;
         color: #1a1a1a;
         overflow-x: hidden;
+        transition: background 0.5s, color 0.5s;
+      }
+
+      body[data-theme="dark"] {
+        background: #090920;
+        color: var(--text-light);
       }
 
       /* === Navbar === */
@@ -69,12 +83,31 @@
         color: var(--accent);
       }
 
+      .theme-toggle {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .theme-toggle:hover {
+        background: var(--accent);
+        color: white;
+      }
+
       /* === Header === */
       header {
         background: linear-gradient(135deg, var(--bg-dark), #1f2456);
         color: var(--text-light);
         text-align: center;
-        padding: 160px 20px 100px;
+        padding: 160px 20px 80px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
@@ -86,64 +119,85 @@
         margin-bottom: 15px;
         object-fit: cover;
         box-shadow: 0 0 25px rgba(212,160,23,0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      header img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 35px rgba(212,160,23,0.7);
       }
 
       h1 {
         font-size: 2.4rem;
         margin-bottom: 10px;
-        color: var(--text-light);
       }
 
       header p {
         font-size: 1.1rem;
         color: var(--text-muted);
-        margin: 0;
       }
 
-      /* === Citação / Missão === */
-      .quote {
-        background: #fff;
-        max-width: 800px;
-        margin: -60px auto 80px;
-        border-radius: 16px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        padding: 30px 40px;
-        text-align: center;
-        font-style: italic;
-        color: #333;
-        line-height: 1.6;
+      /* === Botões de Ação === */
+      .quick-actions {
+        margin-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
       }
 
-      .quote i {
+      .quick-actions a {
+        background: transparent;
+        border: 2px solid var(--accent);
         color: var(--accent);
-        margin-right: 8px;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .quick-actions a:hover {
+        background: var(--accent);
+        color: white;
+      }
+
+      /* === Carrossel === */
+      .carousel {
+        max-width: 900px;
+        margin: 80px auto;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        position: relative;
+      }
+
+      .carousel img {
+        width: 100%;
+        display: none;
+        height: 450px;
+        object-fit: cover;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      .carousel img.active {
+        display: block;
+        opacity: 1;
       }
 
       /* === Seções === */
       .section {
         max-width: 900px;
         margin: 70px auto;
-        background: #fff;
+        background: var(--card-bg);
         border-radius: 18px;
         padding: 50px;
         box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         text-align: center;
-        transition: transform 0.3s ease;
-      }
-
-      .section:hover {
-        transform: translateY(-5px);
+        transition: background 0.5s, color 0.5s;
       }
 
       .section h2 {
         color: var(--bg-dark);
         margin-bottom: 20px;
+      }
+
+      body[data-theme="dark"] .section h2 {
+        color: var(--accent);
       }
 
       .section p {
@@ -152,97 +206,42 @@
         line-height: 1.7;
       }
 
-      .section i {
-        color: var(--accent);
+      body[data-theme="dark"] .section p {
+        color: #ccc;
       }
 
-      /* === Projetos === */
-      .project-grid {
+      /* === Publicações === */
+      .publications {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 25px;
-        margin-top: 30px;
       }
 
-      .project-card {
+      .pub-card {
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         width: 260px;
         padding: 20px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: left;
       }
 
-      .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      }
-
-      .project-card img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        object-fit: cover;
-        height: 140px;
-      }
-
-      .project-card h3 {
-        font-size: 1.05rem;
+      .pub-card h3 {
         color: #111;
+        font-size: 1rem;
         margin-bottom: 8px;
       }
 
-      /* === Mini Linha do Tempo === */
-      .timeline-preview {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        margin-top: 20px;
-        text-align: left;
-        color: #444;
-      }
-
-      .timeline-item {
-        border-left: 3px solid var(--accent);
-        padding-left: 15px;
-        font-size: 0.95rem;
-      }
-
-      /* === Métricas === */
-      .metrics {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 30px;
-      }
-
-      .metric {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        width: 180px;
-        padding: 25px;
-        text-align: center;
-      }
-
-      .metric i {
-        font-size: 1.8rem;
-        color: var(--accent);
-        margin-bottom: 10px;
-      }
-
-      .metric h3 {
-        margin: 5px 0;
-        color: var(--bg-dark);
-      }
-
-      .metric p {
-        margin: 0;
-        color: #666;
+      .pub-card p {
+        color: #555;
         font-size: 0.9rem;
+      }
+
+      .pub-card a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
       }
 
       /* === Footer === */
@@ -254,11 +253,6 @@
         margin-top: 60px;
         font-size: 0.9rem;
       }
-
-      @media screen and (max-width: 768px) {
-        .metrics { gap: 15px; }
-        .metric { width: 140px; }
-      }
     </style>
   </head>
 
@@ -268,85 +262,60 @@
 
     <!-- === HEADER === -->
     <header data-aos="fade-down">
-      <img src="v2_1415dab5-29cb-4f38-9b03-274e3de7a02d.jpg" alt="Foto de Henrique Neves">
+      <img src="v2_1415dab5-29cb-4f38-9b03-274e3de7a02d.jpg" alt="Henrique Alexsander Ferreira Neves">
       <h1>Henrique Alexsander Ferreira Neves</h1>
       <p>Estudante de Medicina | Pesquisador em Meta-Análise | Mentor Internacional</p>
+
+      <!-- Botões -->
+      <div class="quick-actions" data-aos="fade-up">
+        <a href="trajetoria.html"><i class="fas fa-route"></i> Trajetória</a>
+        <a href="projetos.html"><i class="fas fa-flask"></i> Projetos</a>
+        <a href="certificacoes.html"><i class="fas fa-certificate"></i> Certificações</a>
+        <a href="contato.html"><i class="fas fa-envelope"></i> Contato</a>
+      </div>
+
+      <!-- Botão de tema -->
+      <div style="position:absolute; top:20px; right:30px;">
+        <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+      </div>
     </header>
 
-    <!-- === CITAÇÃO / MISSÃO === -->
-    <div class="quote" data-aos="fade-up">
-      <i class="fas fa-quote-left"></i> 
-      “A ciência é o caminho entre o conhecimento e a transformação da vida humana.”
+    <!-- === CARROSSEL === -->
+    <div class="carousel" data-aos="fade-up">
+      <img src="images/cbc2023.jpeg" class="active" alt="CBC 2023">
+      <img src="images/metaSessions.png" alt="Meta Sessions">
+      <img src="images/aphTatico.png" alt="APH Tático">
+      <img src="images/medepigenC2.jpg" alt="MedEpiGen C2">
     </div>
 
     <!-- === SOBRE === -->
     <div class="section" data-aos="fade-up">
       <h2><i class="fas fa-user"></i> Sobre mim</h2>
       <p>
-        Sou estudante de Medicina na Universidade Federal do Paraná (UFPR), com foco em cardiologia, pesquisa científica e inovação em saúde baseada em evidências.
-        Atuo como Coordenador de Tutorias do <strong>Meta-Analysis Academy</strong>, mentorando estudantes e médicos de diversos países na condução de revisões sistemáticas e meta-análises.
-        Também participo de projetos de extensão e pesquisa como o <strong>MedEpiGen</strong> e o <strong>APH-Tático</strong>, unindo ciência, tecnologia e impacto social.
+        Sou estudante de Medicina na <strong>Universidade Federal do Paraná (UFPR)</strong>, com foco em cardiologia, pesquisa científica e inovação tecnológica em saúde.
+        Atuo como Coordenador Internacional de Tutorias no <strong>Meta-Analysis Academy</strong>, mentorando alunos e médicos de mais de 12 países.
+        Também lidero projetos como o <strong>MedEpiGen</strong> e o <strong>APH-Tático</strong>, unindo ciência, ensino e responsabilidade social.
       </p>
     </div>
 
-    <!-- === PROJETOS EM DESTAQUE === -->
+    <!-- === PUBLICAÇÕES === -->
     <div class="section" data-aos="fade-up">
-      <h2><i class="fas fa-flask"></i> Projetos em Destaque</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <img src="images/metaAcademy.png" alt="Meta-Analysis Academy">
-          <h3>Meta-Analysis Academy</h3>
-          <p>Coordenação internacional de tutorias e mentorias em meta-análises.</p>
+      <h2><i class="fas fa-book"></i> Publicações e Apresentações</h2>
+      <div class="publications">
+        <div class="pub-card">
+          <h3>Hypertension-related outcomes in patients with migraine treated with erenumab</h3>
+          <p><i>Headache – The Journal of Head and Face Pain (2025)</i></p>
+          <a href="https://doi.org/10.1111/head.14921" target="_blank">Acessar artigo →</a>
         </div>
-        <div class="project-card">
-          <img src="images/medepigenLogo.png" alt="MedEpiGen">
-          <h3>MedEpiGen</h3>
-          <p>Projeto de extensão em epigenética e educação científica itinerante.</p>
+        <div class="pub-card">
+          <h3>Meta-analysis of Iloprost in Pulmonary Hypertension</h3>
+          <p><i>Journal of Heart and Lung Transplantation (2023)</i></p>
+          <a href="#" target="_blank">Ver detalhes →</a>
         </div>
-        <div class="project-card">
-          <img src="images/aphTatico.png" alt="APH Tático">
-          <h3>APH-Tático</h3>
-          <p>Curso de Atendimento Pré-Hospitalar Tático no CINDACTA II.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- === MINI LINHA DO TEMPO === -->
-    <div class="section" data-aos="fade-up">
-      <h2><i class="fas fa-clock"></i> Minha Jornada</h2>
-      <div class="timeline-preview">
-        <div class="timeline-item">🩺 2020 – Início em Medicina na UFPR</div>
-        <div class="timeline-item">❤️ 2022 – Ingresso na Liga Acadêmica de Cardiologia (LIACOR)</div>
-        <div class="timeline-item">📄 2023 – Publicação no Journal of Heart and Lung Transplant</div>
-        <div class="timeline-item">🏆 2023 – Apresentação no Congresso Brasileiro de Cardiologia</div>
-        <div class="timeline-item">🌍 2025 – Coordenação Internacional no Meta-Analysis Academy</div>
-      </div>
-      <p style="margin-top:20px;"><a href="trajetoria.html" style="color:var(--accent); text-decoration:none; font-weight:600;">→ Ver trajetória completa</a></p>
-    </div>
-
-    <!-- === MÉTRICAS === -->
-    <div class="section" data-aos="fade-up">
-      <h2><i class="fas fa-chart-line"></i> Impacto</h2>
-      <div class="metrics">
-        <div class="metric">
-          <i class="fas fa-users"></i>
-          <h3>80+</h3>
-          <p>Alunos Mentorados</p>
-        </div>
-        <div class="metric">
-          <i class="fas fa-globe-americas"></i>
-          <h3>12</h3>
-          <p>Países Envolvidos</p>
-        </div>
-        <div class="metric">
-          <i class="fas fa-file-alt"></i>
-          <h3>6</h3>
-          <p>Projetos Ativos</p>
-        </div>
-        <div class="metric">
-          <i class="fas fa-book"></i>
-          <h3>3</h3>
-          <p>Artigos Publicados</p>
+        <div class="pub-card">
+          <h3>Oral Presentation – Congresso Brasileiro de Cardiologia 2023</h3>
+          <p><i>Apresentação de meta-análise em Porto Alegre</i></p>
+          <a href="trajetoria.html">Ver evento →</a>
         </div>
       </div>
     </div>
@@ -358,12 +327,33 @@
     <script>
       AOS.init({ duration: 1000, once: true });
 
-      // Carrega o conteúdo da navbar
+      // Navbar load
       fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar').innerHTML = data;
-        });
+        .then(r => r.text())
+        .then(d => document.getElementById('navbar').innerHTML = d);
+
+      // Carrossel simples
+      const slides = document.querySelectorAll('.carousel img');
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4000);
+
+      // Dark mode
+      const toggleBtn = document.getElementById('theme-toggle');
+      toggleBtn.addEventListener('click', () => {
+        const body = document.body;
+        const theme = body.getAttribute('data-theme');
+        if (theme === 'dark') {
+          body.removeAttribute('data-theme');
+          toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+          body.setAttribute('data-theme', 'dark');
+          toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+      });
     </script>
   </body>
 </html>

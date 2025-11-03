@@ -372,7 +372,7 @@
   }
 </style>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-hmKf+LzQCeQPaXUzqUENpH1H+fQXjBQF6Vg8L6rC85K1r3RIPAFb5v6Zr4nTzRQACmX6+mR87UxPjGFaRzP4BA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-hmKf+LzQCeQPaXUzqUENpH1H+fQXjBQF6Vg8L6rC85K1r3RIPAFb5v6Zr4nTzRQACmX6+mR87UxPjGFaRzP4BA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     
   </head>
@@ -527,7 +527,6 @@
     </script>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
 <script>
 console.log("Font Awesome carregado:", typeof FontAwesomeConfig !== "undefined" ? "Sim" : "Não");
 </script>
@@ -546,11 +545,12 @@ console.log("Font Awesome carregado:", typeof FontAwesomeConfig !== "undefined" 
 
   // Ícone dourado estilizado
   const goldIcon = L.divIcon({
-    className: 'custom-icon',
-    html: '<span class="fa-solid fa-location-dot" style="color:#d4a017; font-size:26px; filter: drop-shadow(0 0 5px rgba(212,160,23,0.8));"></span>',
-    iconSize: [24, 24],
-    iconAnchor: [12, 12]
-  });
+  className: 'custom-icon',
+  html: '<i class="fa-solid fa-location-dot" style="color:#d4a017; font-size:26px; text-shadow:0 0 12px rgba(212,160,23,1);"></i>',
+  iconSize: [26, 26],
+  iconAnchor: [13, 13]
+});
+
 
   // Marcadores (você pode ajustar as coordenadas e descrições)
   const locations = [

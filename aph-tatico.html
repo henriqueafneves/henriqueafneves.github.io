@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>APH-Tático | Henrique Neves</title>
 
+    <!-- Fontes e ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2e0f1f0e7.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
       :root {
-        --bg-dark: #0a0a23;
-        --accent: #d4a017;
+        --bg-dark: #0f2310; /* Verde militar profundo */
+        --accent: #d4a017; /* Dourado elegante */
         --text-light: #fff;
+        --green-light: #1f3b1f;
       }
 
       body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: #f7f9fc;
+        background: #f7f9f8;
         color: #1a1a1a;
+        overflow-x: hidden;
       }
 
+      /* === Navbar === */
       nav {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(10,10,35,0.95);
+        background: rgba(15,35,16,0.95);
         color: var(--text-light);
         display: flex;
         justify-content: space-between;
@@ -37,38 +41,149 @@
         z-index: 999;
       }
 
-      .logo { color: var(--accent); font-weight: 600; text-decoration: none; }
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+      }
 
       .nav-links {
-        display: flex; gap: 25px;
+        display: flex;
+        gap: 25px;
       }
-      .nav-links a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
-      .nav-links a:hover { color: var(--accent); }
 
+      .nav-links a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      /* === Banner === */
       header {
-        background: linear-gradient(135deg, var(--bg-dark), #1f2456);
+        background: linear-gradient(rgba(15,35,16,0.8), rgba(15,35,16,0.9)), url('images/aph-banner.jpg') center/cover no-repeat;
         color: var(--text-light);
         text-align: center;
-        padding: 120px 20px 80px;
+        padding: 140px 20px 100px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       }
 
-      header h1 { font-size: 2.3rem; margin-bottom: 10px; }
-      header p { color: #dcdcdc; font-size: 1.1rem; }
-
-      .section {
-        max-width: 900px;
-        margin: 60px auto;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-        padding: 40px;
-        text-align: center;
+      header h1 {
+        font-size: 2.6rem;
+        margin-bottom: 10px;
+        color: var(--accent);
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       }
 
-      .section h2 { color: var(--bg-dark); margin-bottom: 15px; }
-      .section p { color: #444; line-height: 1.6; }
+      header p {
+        font-size: 1.1rem;
+        color: #e8e8e8;
+      }
 
+      /* === Seções === */
+      .section {
+        max-width: 950px;
+        margin: 70px auto;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        padding: 50px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .section:hover {
+        transform: translateY(-5px);
+      }
+
+      .section h2 {
+        color: var(--bg-dark);
+        margin-bottom: 20px;
+      }
+
+      .section p {
+        color: #333;
+        line-height: 1.7;
+      }
+
+      /* === Linha do Tempo === */
+      .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 60px auto;
+      }
+
+      .timeline::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background-color: var(--accent);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .container {
+        padding: 20px 40px;
+        position: relative;
+        width: 50%;
+      }
+
+      .container.left { left: 0; }
+      .container.right { left: 50%; }
+
+      .content {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .content:hover {
+        transform: translateY(-5px);
+      }
+
+      .container::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background-color: var(--accent);
+        border: 3px solid #fff;
+        top: 35px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .container.left::after { right: -9px; }
+      .container.right::after { left: -9px; }
+
+      .content h3 {
+        color: var(--bg-dark);
+        margin-bottom: 5px;
+      }
+
+      .content p {
+        color: #444;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .container { width: 100%; padding-left: 70px; padding-right: 25px; }
+        .container.right { left: 0; }
+        .timeline::after { left: 30px; }
+        .container::after { left: 15px; }
+      }
+
+      /* === Galeria === */
       .photo-grid {
         display: flex;
         flex-wrap: wrap;
@@ -82,63 +197,121 @@
         height: 180px;
         border-radius: 10px;
         object-fit: cover;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         transition: transform 0.3s ease;
       }
 
       .photo-grid img:hover { transform: scale(1.05); }
 
+      /* === Agradecimentos === */
+      .thanks {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .thanks img {
+        width: 120px;
+        opacity: 0.8;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .thanks img:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
       footer {
         background: var(--bg-dark);
         color: #bbb;
         text-align: center;
-        padding: 20px;
+        padding: 25px;
         margin-top: 60px;
       }
     </style>
   </head>
 
   <body>
+    <!-- Navbar -->
     <div id="navbar"></div>
 
+    <!-- Banner -->
     <header data-aos="fade-down">
-      <h1>Curso de Atendimento Pré-Hospitalar Tático</h1>
-      <p>Formando profissionais para agir com foco, frieza e humanidade em cenários de crise.</p>
+      <h1>APH-Tático</h1>
+      <p>Treinamento de elite no CINDACTA II — foco, técnica e humanidade em zonas de combate.</p>
     </header>
 
+    <!-- Sobre -->
     <div class="section" data-aos="fade-up">
       <h2>📖 Sobre o Curso</h2>
       <p>
-        O <strong>APH-Tático</strong> é uma iniciativa realizada no <strong>CINDACTA II</strong>, em Curitiba, 
-        com foco em capacitar profissionais de saúde e segurança pública para o atendimento de vítimas em situações de alto risco.
-        O curso combina fundamentos do <em>Tactical Combat Casualty Care (TCCC)</em> com treinamento prático sob pressão realista.
+        O <strong>APH-Tático</strong> é um curso de atendimento pré-hospitalar voltado para ambientes de alto risco e operações militares.
+        Realizado no <strong>CINDACTA II</strong> em Curitiba, o programa integra médicos, estudantes e agentes da segurança pública
+        sob os princípios do <em>Tactical Combat Casualty Care (TCCC)</em>.
       </p>
     </div>
 
+    <!-- Linha do Tempo -->
     <div class="section" data-aos="fade-up">
-      <h2>🪖 Edições Realizadas</h2>
-      <p>Confira registros das edições realizadas do curso no CINDACTA II:</p>
-
-      <div class="photo-grid">
-        <img src="images/aph1.jpg" alt="APH-Tático 2023">
-        <img src="images/aph2.jpg" alt="Treinamento">
-        <img src="images/aph3.jpg" alt="Simulação Tática">
+      <h2>🪖 Edições do Curso</h2>
+      <div class="timeline">
+        <div class="container left" data-aos="fade-right">
+          <div class="content">
+            <h3>III Edição — Setembro de 2025</h3>
+            <p>Realizada no CINDACTA II com mais de 100 participantes, envolvendo PRF, Polícia Militar e Corpo de Bombeiros.</p>
+          </div>
+        </div>
+        <div class="container right" data-aos="fade-left">
+          <div class="content">
+            <h3>II Edição — Novembro de 2024</h3>
+            <p>Expansão do curso com módulos de evacuação tática e triagem MARCH-E sob fogo simulado.</p>
+          </div>
+        </div>
+        <div class="container left" data-aos="fade-right">
+          <div class="content">
+            <h3>I Edição — Novembro de 2023</h3>
+            <p>Primeira edição histórica, reunindo profissionais civis e militares em treinamento conjunto de resposta tática.</p>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Galeria -->
     <div class="section" data-aos="fade-up">
-      <h2>🎯 Objetivos</h2>
-      <p>
-        • Ensinar o atendimento em zonas quente, morna e fria.<br>
-        • Integrar forças civis e militares em protocolos unificados.<br>
-        • Promover treinamento intensivo com foco em triagem, evacuação e estabilização de feridos.<br>
-      </p>
+      <h2>📸 Galeria de Imagens</h2>
+      <div class="photo-grid">
+        <img src="images/aph1.jpg" alt="Treinamento de extração tática">
+        <img src="images/aph2.jpg" alt="MARCH-E sob pressão">
+        <img src="images/aph3.jpg" alt="Equipe médica e militar unificada">
+        <img src="images/aph4.jpg" alt="Simulação em zona quente">
+      </div>
     </div>
 
+    <!-- Agradecimentos -->
     <div class="section" data-aos="fade-up">
-      <h2>📸 Redes e Contato</h2>
-      <p>Você pode acompanhar os bastidores e futuras edições pelo Instagram oficial:</p>
-      <a href="https://www.instagram.com/aph.tatico" target="_blank" style="color: var(--accent); font-weight: 600;">→ @aph.tatico</a>
+      <h2>🎖️ Agradecimentos</h2>
+      <p>Nosso reconhecimento especial às instituições que tornaram o projeto possível:</p>
+      <div class="thanks">
+        <img src="images/cindacta.png" alt="CINDACTA II">
+        <img src="images/prf.png" alt="PRF">
+        <img src="images/pmpr.png" alt="PMPR">
+        <img src="images/ufpr.png" alt="UFPR">
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="section" data-aos="fade-up">
+      <h2>📲 Acompanhe o Projeto</h2>
+      <p>
+        Veja bastidores, entrevistas e novos treinamentos no perfil oficial do curso:  
+        <br>
+        <a href="https://www.instagram.com/aph.tatico" target="_blank" style="color: var(--accent); font-weight: 600;">
+          → @aph.tatico
+        </a>
+      </p>
     </div>
 
     <footer>© 2025 Henrique Alexsander Ferreira Neves</footer>
